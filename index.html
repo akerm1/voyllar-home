@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <header>
+        <h1>Admin Panel</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#" id="sign-in-button">Sign In</a></li>
+            <li><a href="#" id="sign-out-button">Sign Out</a></li>
+        </ul>
+    </nav>
+    <main>
+        <div id="user-list"></div>
+        
+        <!-- Search Bar and Filters -->
+        <div class="filters">
+            <input type="text" id="search-order-id" placeholder="Search by Order ID">
+            <select id="filter-status">
+                <option value="">Filter by Status</option>
+                <option value="true">Active</option>
+                <option value="false">Inactive</option>
+            </select>
+            <select id="filter-date">
+                <option value="">Sort by Date</option>
+                <option value="asc">Oldest First</option>
+                <option value="desc">Newest First</option>
+            </select>
+            <button id="apply-filters">Apply Filters</button>
+        </div>
+        
+        <div id="order-list"></div>
+    </main>
+    <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
