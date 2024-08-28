@@ -3,14 +3,13 @@ import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChang
 import { getFirestore, collection, getDocs, doc, updateDoc, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyAUKy2RImdrgF2Qu3qD7iQKMO5tfOj4UXo",
-    authDomain: "first-bf4bb.firebaseapp.com",
-    projectId: "first-bf4bb",
-    storageBucket: "first-bf4bb.appspot.com",
-    messagingSenderId: "52847592455",
-    appId: "1:52847592455:web:0d9148a3750b5d420116a2",
-    measurementId: "G-5FMP2L4QEP"
+const firebaseConfig = {
+    apiKey: "AIzaSyBNTDHR67L48F1nPReRs2dSoQ-PxgNKWYM",
+    authDomain: "login2-d485e.firebaseapp.com",
+    projectId: "login2-d485e",
+    storageBucket: "login2-d485e.appspot.com",
+    messagingSenderId: "602998933832",
+    appId: "1:602998933832:web:a397944522901f3c12cb7d"
   };
 
 // Initialize Firebase
