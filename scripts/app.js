@@ -1,26 +1,34 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-app.js";
-import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
+import { getAuth, GoogleAuthProvider, signInWithPopup, signOut, onAuthStateChanged, setPersistence, browserLocalPersistence } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-auth.js";
 import { getFirestore, collection, getDocs, doc, updateDoc, query, where, orderBy } from "https://www.gstatic.com/firebasejs/10.13.0/firebase-firestore.js";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyBNTDHR67L48F1nPReRs2dSoQ-PxgNKWYM",
-    authDomain: "login2-d485e.firebaseapp.com",
-    projectId: "login2-d485e",
-    storageBucket: "login2-d485e.appspot.com",
-    messagingSenderId: "602998933832",
-    appId: "1:602998933832:web:a397944522901f3c12cb7d"
-};
+  const firebaseConfig = {
+    apiKey: "AIzaSyAUKy2RImdrgF2Qu3qD7iQKMO5tfOj4UXo",
+    authDomain: "first-bf4bb.firebaseapp.com",
+    projectId: "first-bf4bb",
+    storageBucket: "first-bf4bb.appspot.com",
+    messagingSenderId: "52847592455",
+    appId: "1:52847592455:web:0d9148a3750b5d420116a2",
+    measurementId: "G-5FMP2L4QEP"
+  };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 
+// Set persistence to local storage
+setPersistence(auth, browserLocalPersistence)
+    .then(() => {
+        console.log("Persistence set to local.");
+    })
+    .catch((error) => {
+        console.error("Error setting auth persistence:", error);
+    });
+
 // Function to sign in with Google
 window.signInWithGoogle = async function() {
-    console.log("Sign-in button clicked");
     const provider = new GoogleAuthProvider();
     try {
         const result = await signInWithPopup(auth, provider);
@@ -34,7 +42,6 @@ window.signInWithGoogle = async function() {
 
 // Function to sign out
 window.signOutUser = async function() {
-    console.log("Sign-out button clicked");
     try {
         await signOut(auth);
         console.log("User signed out.");
@@ -49,7 +56,7 @@ window.signOutUser = async function() {
 function loadCurrentUser() {
     onAuthStateChanged(auth, (user) => {
         const userList = document.getElementById('user-list');
-        userList.innerHTML = ''; // Clear previous content
+        userList.innerHTML = '';
 
         if (user) {
             const userItem = document.createElement('div');
@@ -84,12 +91,11 @@ async function loadOrders() {
         filters.push(orderBy("date", 'desc'));
     }
 
-    // Combine all filters using query
     ordersQuery = query(ordersQuery, ...filters);
 
     try {
         const orderSnapshot = await getDocs(ordersQuery);
-        orderList.innerHTML = ''; // Clear previous content
+        orderList.innerHTML = '';
 
         orderSnapshot.forEach(doc => {
             const order = doc.data();
