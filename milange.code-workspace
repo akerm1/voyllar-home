@@ -1,0 +1,10 @@
+{
+	"folders": [
+		{
+			"path": "../../milange"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "milange"
+	}
+}
